@@ -108,6 +108,11 @@ class StatesController < ApplicationController
     if @_response.response_code == 200
       @project.updated_at = DateTime.now
       @project.update
+
+      users = @project.notifiable_users current_user
+      url = project_path @project, owner_name: @project.owner.slug
+      body = "#{current_user.name} updated the recipe of #{@project.title}."
+      @project.notify users, url, body if users.length > 0
     end
   end
 
