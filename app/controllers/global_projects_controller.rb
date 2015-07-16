@@ -85,6 +85,16 @@ class GlobalProjectsController < ApplicationController
       end
     end
 
+    @all_tags = []
+    file_path = "#{Rails.root}/config/all-tags.yml"
+    all_tags_list = YAML.load_file file_path
+
+    if all_tags_list.present?
+      all_tags_list.each do |tag_name|
+        @all_tags.push tag_name
+      end
+    end
+
     @selected_tools = []
     file_path = "#{Rails.root}/config/selected-tools.yml"
     tools_list = YAML.load_file file_path

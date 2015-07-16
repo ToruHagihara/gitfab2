@@ -602,6 +602,13 @@
             background: white;
             border: 1px solid gray;
           }
+          .show-all, .show-selected {
+            margin-top: 5px;
+            margin-left: 5px;
+          }
+          .all-tags {
+            display:  none;
+          }
         }
       }
       .right {
